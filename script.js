@@ -1,50 +1,38 @@
-const yescoinCount = document.getElementById('yescoinCount');
-const boostCost = document.getElementById('boostCost');
-const boostButton = document.getElementById('boostButton');
-const dailyTaskButton = document.getElementById('dailyTaskButton');
-const clickButton = document.getElementById('clickButton');
-
-// Имитация количества YesCoin, факт выполнения задания и нажатия на кнопку монеты
-let yescoins = 0;
-let upgradeCost = 10;
+let yescoinCount = 0;
+let boostCost = 10;
+let boostMultiplier = 1.3;
 let taskCompleted = false;
-let taskClicked = false;
 
-updateButtons();
+const clickButton = document.getElementById('clickButton');
+const yescoinCountDisplay = document.getElementById('yescoinCount');
+const boostButton = document.getElementById('boostButton');
+const boostCostDisplay = document.getElementById('boostCost');
+const taskButton = document.getElementById('taskButton');
 
-clickButton.addEventListener('click', function() {
-    yescoins++;
-    yescoinCount.textContent = yescoins;
-    updateButtons();
+clickButton.addEventListener('click', () => {
+    yescoinCount += boostMultiplier;
+    yescoinCountDisplay.innerHTML = yescoinCount;
 });
 
-boostButton.addEventListener('click', function() {
-    if (yescoins >= upgradeCost) {
-        yescoins -= upgradeCost;
-        yescoinCount.textContent = yescoins;
-        upgradeCost += 10;
-        boostCost.textContent = upgradeCost;
-        updateButtons();
-    }
-});
-
-dailyTaskButton.addEventListener('click', function() {
-    if (!taskClicked) {
-        yescoins += 50;
-        yescoinCount.textContent = yescoins;
-        taskClicked = true;
-        updateButtons();
-    }
-});
-
-function updateButtons() {
-    if (yescoins >= upgradeCost) {
+boostButton.addEventListener('click', () => {
+    if (yescoinCount >= boostCost) {
+        yescoinCount -= boostCost;
+        boostCost = Math.round(boostCost * 1.7);
+        boostMultiplier *= 1.3;
+        yescoinCountDisplay.innerHTML = yescoinCount;
+        boostCostDisplay.innerHTML = boostCost;
         boostButton.classList.remove('disabled');
     } else {
+        alert('Недостаточно YesCoin для покупки улучшения!');
         boostButton.classList.add('disabled');
     }
+});
 
-    if (taskClicked) {
-        dailyTaskButton.classList.add('disabled');
+taskButton.addEventListener('click', () => {
+    if (!taskCompleted) {
+        yescoinCount += 50;
+        taskCompleted = true;
+        yescoinCountDisplay.innerHTML = yescoinCount;
+        taskButton.classList.add('disabled');
     }
-}
+});
