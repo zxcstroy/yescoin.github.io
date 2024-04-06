@@ -1,61 +1,46 @@
-let yescoinCount = localStorage.getItem('yescoinCount') ? parseInt(localStorage.getItem('yescoinCount')) : 0;
-let boostCost = localStorage.getItem('boostCost') ? parseInt(localStorage.getItem('boostCost')) : 10;
-let boostMultiplier = localStorage.getItem('boostMultiplier') ? parseFloat(localStorage.getItem('boostMultiplier')) : 1.3;
-let dailyTaskCompleted = localStorage.getItem('dailyTaskCompleted') === 'true' ? true : false;
-
-const clickButton = document.getElementById('clickButton');
-const yescoinCountDisplay = document.getElementById('yescoinCount');
+const yescoinCount = document.getElementById('yescoinCount');
+const boostCost = document.getElementById('boostCost');
 const boostButton = document.getElementById('boostButton');
-const boostCostDisplay = document.getElementById('boostCost');
 const dailyTaskButton = document.getElementById('dailyTaskButton');
 
-yescoinCountDisplay.innerHTML = Math.round(yescoinCount);
-boostCostDisplay.innerHTML = Math.round(boostCost);
+// Имитация количества YesCoin
+let yescoins = 0;
+let upgradeCost = 10;
+let taskCompleted = false;
 
-clickButton.addEventListener('click', () => {
-    yescoinCount += Math.round(boostMultiplier);
-    yescoinCountDisplay.innerHTML = Math.round(yescoinCount);
-    localStorage.setItem('yescoinCount', yescoinCount.toString());
+updateButtons();
+
+document.getElementById('clickButton').addEventListener('click', function() {
+    yescoins++;
+    yescoinCount.textContent = yescoins;
+    updateButtons();
 });
 
-boostButton.addEventListener('click', () => {
-    if (yescoinCount >= boostCost) {
-        yescoinCount -= boostCost;
-        boostCost = Math.round(boostCost * 1.7);
-        boostMultiplier *= 1.3;
-        yescoinCountDisplay.innerHTML = Math.round(yescoinCount);
-        boostCostDisplay.innerHTML = Math.round(boostCost);
-        localStorage.setItem('yescoinCount', yescoinCount.toString());
-        localStorage.setItem('boostCost', boostCost.toString());
-        localStorage.setItem('boostMultiplier', boostMultiplier.toString());
+boostButton.addEventListener('click', function() {
+    if (yescoins >= upgradeCost) {
+        yescoins -= upgradeCost;
+        yescoinCount.textContent = yescoins;
+        upgradeCost += 10;
+        boostCost.textContent = upgradeCost;
+        updateButtons();
+    }
+});
+
+dailyTaskButton.addEventListener('click', function() {
+    taskCompleted = true;
+    updateButtons();
+});
+
+function updateButtons() {
+    if (yescoins >= upgradeCost) {
+        boostButton.classList.add('purple-button');
     } else {
-        alert('Не хватка YesCoin🚨🚨!');
+        boostButton.classList.remove('purple-button');
     }
-    updateBoostButtonColor();
-});
 
-dailyTaskButton.addEventListener('click', () => {
-    if (!dailyTaskCompleted) {
-        yescoinCount += 50;
-        yescoinCountDisplay.innerHTML = Math.round(yescoinCount);
-        localStorage.setItem('yescoinCount', yescoinCount.toString());
-        dailyTaskCompleted = true;
-        localStorage.setItem('dailyTaskCompleted', 'true');
-        dailyTaskButton.disabled = true;
-        dailyTaskButton.style.background = 'grey';
-    }
-});
-
-function updateBoostButtonColor() {
-    if (yescoinCount >= boostCost) {
-        boostButton.style.background = 'green';
+    if (!taskCompleted) {
+        dailyTaskButton.classList.add('purple-button');
     } else {
-        boostButton.style.background = 'grey';
+        dailyTaskButton.classList.remove('purple-button');
     }
-}
-
-updateBoostButtonColor();
-if (dailyTaskCompleted) {
-    dailyTaskButton.disabled = true;
-    dailyTaskButton.style.background = 'grey';
 }
