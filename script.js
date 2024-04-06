@@ -1,7 +1,8 @@
 let yescoinCount = 0;
 let boostCost = 10;
-let boostMultiplier = 1.3;
+let boostMultiplier = 1.7;
 let taskCompleted = false;
+let taskClicked = false;
 
 const clickButton = document.getElementById('clickButton');
 const yescoinCountDisplay = document.getElementById('yescoinCount');
@@ -17,21 +18,19 @@ clickButton.addEventListener('click', () => {
 boostButton.addEventListener('click', () => {
     if (yescoinCount >= boostCost) {
         yescoinCount -= boostCost;
-        boostCost = Math.round(boostCost * 1.7);
-        boostMultiplier *= 1.3;
+        boostCost = Math.round(boostCost * 2);
+        boostMultiplier *= 2;
         yescoinCountDisplay.innerHTML = yescoinCount;
         boostCostDisplay.innerHTML = boostCost;
-        boostButton.classList.remove('disabled');
     } else {
         alert('Недостаточно YesCoin для покупки улучшения!');
-        boostButton.classList.add('disabled');
     }
 });
 
 taskButton.addEventListener('click', () => {
-    if (!taskCompleted) {
+    if (!taskClicked) {
         yescoinCount += 50;
-        taskCompleted = true;
+        taskClicked = true;
         yescoinCountDisplay.innerHTML = yescoinCount;
         taskButton.classList.add('disabled');
     }
