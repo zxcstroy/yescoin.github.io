@@ -30,10 +30,10 @@ button:hover {
     background-color: #45a049;
 }
 
-.boosts, .tasks, .exchange {
+.boosts, .tasks {
     margin-top: 20px;
 }
 
-.boosts button, .exchange button {
+.boosts button {
     margin-top: 10px;
 }
