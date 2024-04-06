@@ -1,41 +1,34 @@
 body {
-    background: linear-gradient(to bottom right, #8E2DE2, #4A00E0);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    height: 100vh;
-    margin: 0;
     font-family: Arial, sans-serif;
+    background: linear-gradient(to right top, #8E2DE2, #4A00E0);
     color: white;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
-.container {
-    background-color: rgba(255, 255, 255, 0.8);
+.wrapper {
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
+    border: 2px solid white;
     border-radius: 10px;
-}
-
-.disabled {
-    background-color: grey;
-    color: white;
-    cursor: not-allowed;
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 button {
+    padding: 10px 20px;
+    font-size: 16px;
     background: linear-gradient(to right top, #8E2DE2, #4A00E0);
     color: white;
-    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin: 10px;
+    margin-top: 10px;
 }
 
-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+button.disabled {
+    background: grey;
+    color: white;
+}
+
+button:hover {
+    background: linear-gradient(to right top, #8E2DE2, #4A00E0);
 }
