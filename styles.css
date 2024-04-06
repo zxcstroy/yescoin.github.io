@@ -1,39 +1,35 @@
 body {
+    background: linear-gradient(to bottom right, #8E2DE2, #4A00E0);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    margin: 0;
     font-family: Arial, sans-serif;
+    color: white;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.wrapper {
-    max-width: 800px;
-    margin: 0 auto;
+.container {
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
-    border: 2px solid #ccc;
     border-radius: 10px;
-    background-color: #f9f9f9;
-}
-
-.click-area {
-    margin-bottom: 20px;
 }
 
 button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #4CAF50;
+    background: linear-gradient(to right top, #8E2DE2, #4A00E0);
     color: white;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin: 10px;
 }
 
-button:hover {
-    background-color: #45a049;
-}
-
-.boosts, .tasks {
-    margin-top: 20px;
-}
-
-.boosts button {
-    margin-top: 10px;
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
