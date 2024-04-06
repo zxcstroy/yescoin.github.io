@@ -19,6 +19,12 @@ body {
     border-radius: 10px;
 }
 
+.disabled {
+    background-color: grey;
+    color: white;
+    cursor: not-allowed;
+}
+
 button {
     background: linear-gradient(to right top, #8E2DE2, #4A00E0);
     color: white;
