@@ -1,10 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YesCoin Clicker</title>
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YesCoin Clicker</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #8E2DE2, #4A00E0);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wrapper {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .click-area, .boosts, .tasks {
+            margin: 10px 0;
+        }
+
+        button {
+            background: linear-gradient(to right top, #8E2DE2, #4A00E0);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
 </head>
 <body>
 <div class="wrapper">
@@ -18,8 +58,8 @@
         <button id="boostButton">Купить улучшение (Цена: <span id="boostCost">10</span>)</button>
     </div>
     <div class="tasks">
-    <h2>Tasks</h2>
-    <button id="dailyTaskButton">Просто кликни</button>
+        <h2>Tasks</h2>
+        <button id="dailyTaskButton">Просто кликни</button>
     </div>
 </div>
 <script src="script.js"></script>
