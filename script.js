@@ -1,29 +1,25 @@
-let notcoinCount = 0;
+let yescoinCount = 0;
 let boostCost = 10;
+let boostMultiplier = 1.3;
 
 const clickButton = document.getElementById('clickButton');
-const notcoinCountDisplay = document.getElementById('notcoinCount');
+const yescoinCountDisplay = document.getElementById('yescoinCount');
 const boostButton = document.getElementById('boostButton');
 const boostCostDisplay = document.getElementById('boostCost');
-const exchangeButton = document.getElementById('exchangeButton');
 
 clickButton.addEventListener('click', () => {
-    notcoinCount++;
-    notcoinCountDisplay.innerHTML = notcoinCount;
+    yescoinCount += boostMultiplier;
+    yescoinCountDisplay.innerHTML = yescoinCount;
 });
 
 boostButton.addEventListener('click', () => {
-    if (notcoinCount >= boostCost) {
-        notcoinCount -= boostCost;
-        boostCost *= 2;
-        notcoinCountDisplay.innerHTML = notcoinCount;
+    if (yescoinCount >= boostCost) {
+        yescoinCount -= boostCost;
+        boostCost = Math.round(boostCost * 1.7);
+        boostMultiplier *= 1.3;
+        yescoinCountDisplay.innerHTML = yescoinCount;
         boostCostDisplay.innerHTML = boostCost;
     } else {
-        alert('Not enough Notcoins to buy Boost!');
+        alert('Не хватает YesCoin'ов!');
     }
-});
-
-exchangeButton.addEventListener('click', () => {
-    notcoinCount *= 2; // Просто для примера удвоения Notcoins
-    notcoinCountDisplay.innerHTML = notcoinCount;
 });
