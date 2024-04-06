@@ -2,8 +2,9 @@ const yescoinCount = document.getElementById('yescoinCount');
 const boostCost = document.getElementById('boostCost');
 const boostButton = document.getElementById('boostButton');
 const dailyTaskButton = document.getElementById('dailyTaskButton');
+const clickButton = document.getElementById('clickButton');
 
-// Имитация количества YesCoin, а также факт выполнения задания
+// Имитация количества YesCoin, факт выполнения задания и нажатия на кнопку монеты
 let yescoins = 0;
 let upgradeCost = 10;
 let taskCompleted = false;
@@ -11,7 +12,7 @@ let taskClicked = false;
 
 updateButtons();
 
-document.getElementById('clickButton').addEventListener('click', function() {
+clickButton.addEventListener('click', function() {
     yescoins++;
     yescoinCount.textContent = yescoins;
     updateButtons();
