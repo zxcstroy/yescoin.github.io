@@ -26,23 +26,25 @@
             border-radius: 10px;
         }
 
-        .click-area, .boosts, .tasks {
-            margin: 10px 0;
-        }
-
-        button {
-            background: linear-gradient(to right top, #8E2DE2, #4A00E0);
-            color: white;
-            padding: 10px 20px;
+        .coin {
+            width: 50px;
+            height: 50px;
+            background-image: url('https://example.com/coin.png'); /* Замените ссылку на изображение монеты */
+            background-size: contain;
+            background-repeat: no-repeat;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
-            margin: 10px;
         }
 
         .purple-button {
             background: linear-gradient(to right top, #8E2DE2, #4A00E0);
             color: white;
+        }
+
+        .disabled {
+            background-color: grey;
+            color: white;
+            cursor: not-allowed;
         }
     </style>
 </head>
@@ -50,16 +52,16 @@
 <div class="wrapper">
     <h1>YesCoin Clicker</h1>
     <div class="click-area">
-        <button id="clickButton">Нажми на меня!</button>
+        <button id="clickButton" class="coin"></button>
         <p>YesCoins: <span id="yescoinCount">0</span></p>
     </div>
     <div class="boosts">
         <h2>Улучшение</h2>
-        <button id="boostButton">Купить улучшение (Цена: <span id="boostCost">10</span>)</button>
+        <button id="boostButton" class="purple-button">Купить улучшение (Цена: <span id="boostCost">10</span>)</button>
     </div>
     <div class="tasks">
         <h2>Tasks</h2>
-        <button id="dailyTaskButton">Просто кликни</button>
+        <button id="dailyTaskButton" class="purple-button">Просто кликни</button>
     </div>
 </div>
 <script src="script.js"></script>
