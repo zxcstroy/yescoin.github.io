@@ -3,10 +3,11 @@ const boostCost = document.getElementById('boostCost');
 const boostButton = document.getElementById('boostButton');
 const dailyTaskButton = document.getElementById('dailyTaskButton');
 
-// Имитация количества YesCoin
+// Имитация количества YesCoin, а также факт выполнения задания
 let yescoins = 0;
 let upgradeCost = 10;
 let taskCompleted = false;
+let taskClicked = false;
 
 updateButtons();
 
@@ -27,20 +28,22 @@ boostButton.addEventListener('click', function() {
 });
 
 dailyTaskButton.addEventListener('click', function() {
-    taskCompleted = true;
-    updateButtons();
+    if (!taskClicked) {
+        yescoins += 50;
+        yescoinCount.textContent = yescoins;
+        taskClicked = true;
+        updateButtons();
+    }
 });
 
 function updateButtons() {
     if (yescoins >= upgradeCost) {
-        boostButton.classList.add('purple-button');
+        boostButton.classList.remove('disabled');
     } else {
-        boostButton.classList.remove('purple-button');
+        boostButton.classList.add('disabled');
     }
 
-    if (!taskCompleted) {
-        dailyTaskButton.classList.add('purple-button');
-    } else {
-        dailyTaskButton.classList.remove('purple-button');
+    if (taskClicked) {
+        dailyTaskButton.classList.add('disabled');
     }
 }
